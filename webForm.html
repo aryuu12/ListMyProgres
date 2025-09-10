@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Pendaftaran</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin: 20px;
+        gap: 40px;
+    }
+    .form-box {
+        flex: 1;
+        max-width: 350px;
+        background: #757474;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 6px;
+        margin-top: 4px;
+        margin-bottom: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        padding: 8px 16px;
+        background: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    button:hover {
+        background: #45a049;
+    }
+
+    .table-box {
+        flex: 2;
+        background: #757474;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        min-width: 500px;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+</head>
+<body>
+
+<h2>Form Pendaftaran Member Perpustakaan</h2>
+
+<div class="container">
+    <div class="form-box">
+        <form id="inputForm" onsubmit="event.preventDefault(); submitForm();">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+
+            <label for="gender">Jenis Kelamin:</label>
+            <select id="gender" name="gender">
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+            </select>
+
+            <label for="birthdate">Tanggal Lahir:</label>
+            <input type="date" id="birthdate" name="birthdate">
+
+            <label for="alamat">Alamat:</label>
+            <input type="text" id="alamat" name="alamat">
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email">
+
+            <label for="notelp">No. Telp:</label>
+            <input type="text" id="notelp" name="notelp">
+
+            <label for="pekerjaan">Pekerjaan/Sekolah/PT:</label>
+            <input type="text" id="pekerjaan" name="pekerjaan">
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="table-box">
+        <h2>Daftar Anggota</h2>
+        <table id="Daftar anggota">
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Tanggal Lahir</th>
+                <th>Alamat</th>
+                <th>Email</th>
+                <th>No. Telp</th>
+                <th>Pekerjaan</th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+function submitForm() {
+    var form = document.getElementById("inputForm");
+    var name = form.elements["name"].value;
+    var gender = form.elements["gender"].value;
+    var birthdate = form.elements["birthdate"].value;
+    var alamat = form.elements["alamat"].value;
+    var email = form.elements["email"].value;
+    var pekerjaan = form.elements["pekerjaan"].value;
+    var notelp = form.elements["notelp"].value;
+
+    var table = document.getElementById("Daftar anggota");
+    var newRow = table.insertRow(-1);
+    newRow.insertCell(0).innerHTML = name;
+    newRow.insertCell(1).innerHTML = gender;
+    newRow.insertCell(2).innerHTML = birthdate;
+    newRow.insertCell(3).innerHTML = alamat;
+    newRow.insertCell(4).innerHTML = email;
+    newRow.insertCell(5).innerHTML = notelp;
+    newRow.insertCell(6).innerHTML = pekerjaan;
+
+    form.reset();
+}
+</script>
+
+</body>
+</html>

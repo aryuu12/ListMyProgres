@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabel Hasil Input</title>
+<style>
+    body { font-family: Arial, sans-serif; 
+        background-color: #ffffff; 
+    }
+
+    h2 { text-align: center; 
+    }
+
+    .table-box {
+        max-width: 900px; 
+        margin: 30px auto;
+        background: #757474; 
+        padding: 20px;
+        border-radius: 10px; 
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    table { border-collapse: collapse;
+         width: 100%; 
+        }
+
+    table, th, td { border: 1px solid rgb(0, 0, 0); 
+        padding: 8px; 
+        text-align: left; 
+    }
+
+    th { background-color: #ffffff; 
+    }
+</style>
+</head>
+<body>
+
+<h2>Daftar Anggota Perpustakaan</h2>
+
+<div class="table-box">
+    <table id="DaftarAnggota">
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Tanggal Lahir</th>
+            <th>Alamat</th>
+            <th>Email</th>
+            <th>No. Telp</th>
+            <th>Pekerjaan</th>
+        </tr>
+    </table>
+    <br>
+    <a href="forminput.html">Kembali ke Form Pendaftaran</a>
+</div>
+
+<script>
+window.onload = function() {
+    let anggota = JSON.parse(localStorage.getItem("anggota")) || [];
+    let table = document.getElementById("DaftarAnggota");
+
+    anggota.forEach(data => {
+        let newRow = table.insertRow(-1);
+        newRow.insertCell(0).innerHTML = data.name;
+        newRow.insertCell(1).innerHTML = data.gender;
+        newRow.insertCell(2).innerHTML = data.birthdate;
+        newRow.insertCell(3).innerHTML = data.alamat;
+        newRow.insertCell(4).innerHTML = data.email;
+        newRow.insertCell(5).innerHTML = data.notelp;
+        newRow.insertCell(6).innerHTML = data.pekerjaan;
+    });
+};
+</script>
+
+</body>
+</html>

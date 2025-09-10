@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Pendaftaran</title>
+<style>
+    body { font-family: Arial, sans-serif;
+         background-color: #ffffff; 
+        }
+        
+    h2 { text-align: center; 
+    }
+
+    .form-box {
+        max-width: 350px;
+        margin: 30px auto;
+        background: #757474;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    label { font-weight: bold; 
+    }
+
+    input, select {
+        width: 100%; 
+        padding: 6px; 
+        margin: 6px 0;
+        border: 1px solid #ccc; 
+        border-radius: 5px;
+    }
+
+    button {
+        padding: 8px 16px; 
+        background: #4CAF50; 
+        color: white;
+        border: none; 
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    button:hover { background: #45a049; 
+    }
+</style>
+</head>
+<body>
+
+<h2>Form Pendaftaran Member Perpustakaan</h2>
+
+<div class="form-box">
+    <form id="inputForm" onsubmit="event.preventDefault(); submitForm();">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+
+        <label for="gender">Jenis Kelamin:</label>
+        <select id="gender" name="gender">
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+        </select>
+
+        <label for="birthdate">Tanggal Lahir:</label>
+        <input type="date" id="birthdate" name="birthdate">
+
+        <label for="alamat">Alamat:</label>
+        <input type="text" id="alamat" name="alamat">
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email">
+
+        <label for="notelp">No. Telp:</label>
+        <input type="text" id="notelp" name="notelp">
+
+        <label for="pekerjaan">Pekerjaan/Sekolah/PT:</label>
+        <input type="text" id="pekerjaan" name="pekerjaan">
+
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    <a href="tabelhasil.html">Lihat Tabel Daftar Anggota</a>
+</div>
+
+<script>
+function submitForm() {
+    let form = document.getElementById("inputForm");
+    let data = {
+        name: form.name.value,
+        gender: form.gender.value,
+        birthdate: form.birthdate.value,
+        alamat: form.alamat.value,
+        email: form.email.value,
+        notelp: form.notelp.value,
+        pekerjaan: form.pekerjaan.value
+    };
+
+    let anggota = JSON.parse(localStorage.getItem("anggota")) || [];
+    
+    anggota.push(data);
+    
+    localStorage.setItem("anggota", JSON.stringify(anggota));
+
+    alert("Data berhasil disimpan!");
+    form.reset();
+}
+</script>
+
+</body>
+</html>
